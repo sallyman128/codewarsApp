@@ -1,22 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { fetchCodewars } from "../api/fetchRequests";
 
-const DisplayRanks = () => {
-
-    // const [data, setData] = useState({});
-
-    // useEffect( () => {
-    //     setData(fetchCodewars())
-    //     console.log(data)
-    // }, [])
-
-    const data = fetchCodewars();
-    console.log(data)
+const DisplayRanks = (ranks) => {
 
     return (
         <div>
-            display ranks
-            <p>{data.username}</p>
+            <p>display ranks</p>
+            <ul>
+                {/* {Object.entries(ranks.languages).map(([language, details]) => (
+                    <li>{language}</li>
+                ))} */}
+            </ul>
         </div>
     )
 }
