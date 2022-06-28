@@ -1,18 +1,41 @@
 import React, { useEffect, useState } from "react";
-import { fetchCodewars } from "../api/fetchRequests";
+import {PieChart} from 'react-minimal-pie-chart';
 
-const DisplayRanks = (ranks) => {
+const LanguagePieChart = ({skills}) => {
+
+    const [languages, setLanguages] = useState(skills.languages)
+    console.log(languages)
+
+    const pieColors = {
+        ruby: "red",
+        python: "blue",
+        javascript: "yellow",
+        java: "brown",
+        groovy: "green"
+    }
+
+    const defaultLabelStyle = {
+        fontSize: '10%',
+        fontFamily: 'sans-serif',
+    };
+
+    const renderPieChart = () => {
+        let data = Object.entries(languages)
+        data = data.map( ([language, details]) => {
+            return {
+                title: language,
+                value: details.score,
+                color: pieColors[language],
+            }
+        })
+        return <PieChart data={data} radius={20} label={({ dataEntry }) => dataEntry.title} labelStyle={{...defaultLabelStyle}} />
+    }
 
     return (
         <div>
-            <p>display ranks</p>
-            <ul>
-                {/* {Object.entries(ranks.languages).map(([language, details]) => (
-                    <li>{language}</li>
-                ))} */}
-            </ul>
+            {renderPieChart()}
         </div>
     )
 }
 
-export default DisplayRanks;
+export default LanguagePieChart;
