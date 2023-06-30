@@ -1,14 +1,30 @@
 import React from "react";
+import { useState } from "react";
+import { fetchCodewarsData } from "./api/fetchRequests";
+import Dashboard from "./Dashboard";
 
 const Welcome = () => {
-    const submitUsername = () => {
-        console.log('submit username')
+    const [username, setUsername] = useState({})
+    const [data, setData] = useState({});
+
+    const handleUsernameUpdate = (event) => {
+        setUsername(event.target.value);
+    }
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        fetchCodewarsData(username).then(data => setData(data))
+        console.log(data)
     }
 
     return (
         <div>
-            {/* <h1>Hi {username}!</h1> */}
-            <text>Enter CodeWars username: <input value='username' onSubmit={submitUsername}></input></text>
+            <form onSubmit={handleSubmit}>
+                <h1>Enter CodeWars username:</h1>
+                <input type='text' name='username' onChange={handleUsernameUpdate} />
+                <input type='submit' value='Submit' />
+            </form>
+            <Dashboard data={data}/>
         </div>
     )
 }
