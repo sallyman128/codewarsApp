@@ -4,7 +4,7 @@ import { fetchCodewarsData } from "./api/fetchRequests";
 import Dashboard from "./Dashboard";
 
 const Welcome = () => {
-    const [username, setUsername] = useState({})
+    const [username, setUsername] = useState()
     const [data, setData] = useState({});
 
     const handleUsernameUpdate = (event) => {
@@ -14,7 +14,6 @@ const Welcome = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         fetchCodewarsData(username).then(data => setData(data))
-        console.log(data)
     }
 
     return (
