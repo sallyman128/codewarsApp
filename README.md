@@ -1,9 +1,11 @@
 TODO:
-- Create a welcome page that prompts a user to input a codewars username
+- DONE -- Create a welcome page that prompts a user to input a codewars username
 - If username exists (i.e. codewars data can be fetched with the username)
   - then show a dashboard of their stats
 - else
   - append the welcome page with a warning stating that the username does not exist
+
+- Fix NavBar
 
 - For the dashboard:
   - Step 1: Display each coding language the user has for their codewars profile along with the associated kata level
